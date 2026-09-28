@@ -21,7 +21,9 @@ export function Footer() {
           </div>
           <nav aria-label="Навигация в подвале">
             <ul className="grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3">
-              {siteContent.navigation.map((item) => (
+              {siteContent.navigation
+                .filter((item) => item.href !== "#addons" || siteContent.features.showAddons)
+                .map((item) => (
                 <li key={item.href}>
                   <a href={item.href} className="text-sm font-bold text-white/75 transition hover:text-brand-yellow">
                     {item.label}

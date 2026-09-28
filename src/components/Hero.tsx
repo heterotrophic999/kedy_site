@@ -21,14 +21,6 @@ export function Hero() {
             <PrimaryButton href={hero.primaryCta.href}>{hero.primaryCta.label}<Icon name="arrow" className="size-5" /></PrimaryButton>
             <SecondaryButton href={hero.secondaryCta.href}>{hero.secondaryCta.label}</SecondaryButton>
           </div>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-3">
-            {hero.advantages.map((advantage) => (
-              <li key={advantage} className="flex items-center gap-2 text-sm font-extrabold leading-5 text-brand-purple">
-                <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-yellow"><Icon name="check" className="size-4" /></span>
-                {advantage}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="relative mx-auto w-full max-w-[680px] lg:mx-0">

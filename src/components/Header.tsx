@@ -27,7 +27,9 @@ export function Header() {
 
         <nav aria-label="Основная навигация" className="hidden xl:block">
           <ul className="flex items-center gap-5">
-            {siteContent.navigation.map((item) => (
+            {siteContent.navigation
+                .filter((item) => item.href !== "#addons" || siteContent.features.showAddons)
+                .map((item) => (
               <li key={item.href}>
                 <a className="text-sm font-bold text-ink/75 transition hover:text-brand-pink" href={item.href}>
                   {item.label}
@@ -72,7 +74,9 @@ export function Header() {
       >
         <nav aria-label="Мобильная навигация">
           <ul className="grid sm:grid-cols-2">
-            {siteContent.navigation.map((item) => (
+            {siteContent.navigation
+                .filter((item) => item.href !== "#addons" || siteContent.features.showAddons)
+                .map((item) => (
               <li key={item.href}>
                 <a className="block border-b border-brand-purple/5 py-3 font-bold text-ink hover:text-brand-pink" href={item.href} onClick={() => setOpen(false)}>
                   {item.label}

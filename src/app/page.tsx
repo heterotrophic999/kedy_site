@@ -12,6 +12,10 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { siteContent } from "@/content/siteContent";
 
 export default function Home() {
+  const visibleCategories = siteContent.categories.filter(
+    (item) => item.href !== "#addons" || siteContent.features.showAddons,
+  );
+
   return (
     <>
       <Header />
@@ -20,9 +24,9 @@ export default function Home() {
 
         <SectionShell id="categories" tone="cream">
           <SectionHeading {...siteContent.categoriesIntro} align="center" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {siteContent.categories.map((item, index) => (
-              <CategoryCard key={item.id} {...item} featured={index === siteContent.categories.length - 1} />
+          <div className={`mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${siteContent.features.showAddons ? "xl:grid-cols-5" : "xl:grid-cols-4"}`}>
+            {visibleCategories.map((item, index) => (
+              <CategoryCard key={item.id} {...item} featured={index === visibleCategories.length - 1} />
             ))}
           </div>
         </SectionShell>
@@ -39,6 +43,18 @@ export default function Home() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {siteContent.animators.map((item) => <ServiceCard key={item.id} item={item} />)}
           </div>
+          <aside className="mt-8 flex flex-col gap-5 rounded-[28px] bg-surface-lilac px-6 py-6 shadow-card sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="flex items-start gap-4">
+              <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full bg-brand-yellow text-xl text-brand-purple">✦</span>
+              <div>
+                <h3 className="text-xl font-black text-brand-purple sm:text-2xl">{siteContent.sections.animators.noteTitle}</h3>
+                <p className="mt-1 max-w-3xl text-base leading-6 text-ink/70">{siteContent.sections.animators.noteText}</p>
+              </div>
+            </div>
+            <a href="#contacts" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-brand-pink px-5 py-2.5 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#C9006D]">
+              {siteContent.sections.animators.noteCta}
+            </a>
+          </aside>
         </SectionShell>
 
         <SectionShell id="parties" tone="blush" decorate>
@@ -55,12 +71,14 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="addons" tone="lilac" decorate>
-          <SectionHeading {...siteContent.sections.addons} align="center" />
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {siteContent.addons.map((item) => <AddonCard key={item.id} {...item} />)}
-          </div>
-        </SectionShell>
+        {siteContent.features.showAddons ? (
+          <SectionShell id="addons" tone="lilac" decorate>
+            <SectionHeading {...siteContent.sections.addons} align="center" />
+            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {siteContent.addons.map((item) => <AddonCard key={item.id} {...item} />)}
+            </div>
+          </SectionShell>
+        ) : null}
 
         <section id="contacts" className="relative isolate overflow-hidden bg-brand-purple py-16 sm:py-20 lg:py-28">
           <DecorativeLayer variant="contact" />
