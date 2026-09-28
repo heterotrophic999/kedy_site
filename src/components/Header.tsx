@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { siteContent } from "@/content/siteContent";
 import { Container } from "./Container";
@@ -21,10 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[var(--header-height)] border-b border-brand-purple/10 bg-white/90 backdrop-blur-xl">
       <Container className="flex h-full items-center justify-between gap-4">
         <a href="#top" aria-label={siteContent.header.homeLabel} className="group flex shrink-0 items-center gap-2">
-          <span className="relative text-2xl font-black tracking-[-0.06em] text-brand-purple sm:text-3xl">
-            {siteContent.brand.name.slice(0, -1)}<span className="text-brand-pink">{siteContent.brand.name.slice(-1)}</span>
-            <span className="absolute -right-3 -top-1 size-2 rounded-full bg-brand-yellow transition-transform group-hover:scale-150" />
-          </span>
+          <Image src={siteContent.brand.logo.src} alt={siteContent.brand.logo.alt} width={84} height={56} priority className="h-12 w-[72px] object-contain transition duration-200 group-hover:scale-105 sm:h-14 sm:w-[84px]" />
         </a>
 
         <nav aria-label="Основная навигация" className="hidden xl:block">

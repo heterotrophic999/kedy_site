@@ -19,6 +19,10 @@ export const siteContent = {
   brand: {
     name: "КЕДЫ",
     tagline: "агентство детских праздников",
+    logo: {
+      src: "/images/brand/kedy-logo-transparent.png",
+      alt: "КЕДЫ — организация детских праздников",
+    },
   },
   navigation: [
     { label: "О нас", href: "#why-us" },
@@ -449,15 +453,15 @@ export const siteContent = {
       "Подберём программу, героев и дополнения под возраст, интересы и ваш бюджет. Ответим в рабочее время в течение 20 минут.",
   },
   contacts: {
-    phone: "+7 (913) 000-12-34",
-    phoneHref: "tel:+79130001234",
+    phone: "+7 960 960 2652",
+    phoneHref: "tel:+79609602652",
     city: "Новосибирск и ближайший пригород",
   },
   socials: [
-    { id: "vk", label: "ВКонтакте", href: "https://vk.com/" },
-    { id: "telegram", label: "Telegram", href: "https://t.me/" },
-    { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/79130001234" },
-    { id: "max", label: "MAX", href: "https://max.ru/" },
+    { id: "vk", label: "ВКонтакте", href: "https://vk.ru/lkobrucheva" },
+    { id: "telegram", label: "Telegram", href: "https://t.me/kobrucheva" },
+    { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/qr/Y2LCONT5J7CMH1" },
+    { id: "max", label: "MAX", href: "https://max.ru/u/f9LHodD0cOKZrJDMzWf0cgozMqPx4s2B01k9x9URSadS1snZyPfrRPuU4zE" },
   ],
   footer: {
     note: "Праздники, в которые хочется возвращаться.",
