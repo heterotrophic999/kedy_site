@@ -74,8 +74,8 @@ export const siteContent = {
       description: "Любимые герои оживают",
       href: "#animators",
       image: {
-        src: "/images/categories/animators.webp",
-        alt: "Аниматоры на детском празднике",
+        src: "/images/categories/animators.jpg",
+        alt: "Аниматор с праздничным тортом для детей",
         objectPosition: "center 35%",
         aspectRatio: "4/3",
       },
@@ -86,8 +86,8 @@ export const siteContent = {
       description: "Готовый праздник без хлопот",
       href: "#contacts",
       image: {
-        src: "/images/categories/packages.webp",
-        alt: "Праздничный стол и декор пакетного предложения",
+        src: "/images/categories/packages.jpg",
+        alt: "Дети и аниматор на праздничной программе",
         objectPosition: "center",
         aspectRatio: "4/3",
       },
@@ -98,7 +98,7 @@ export const siteContent = {
       description: "Зрелищно и удивительно",
       href: "#shows",
       image: {
-        src: "/images/categories/shows.webp",
+        src: "/images/categories/show-programs.jpg",
         alt: "Яркая шоу-программа для детей",
         objectPosition: "center 40%",
         aspectRatio: "4/3",
@@ -110,7 +110,7 @@ export const siteContent = {
       description: "Когда обычный праздник уже мал",
       href: "#parties",
       image: {
-        src: "/images/categories/parties-8plus.webp",
+        src: "/images/categories/parties.jpg",
         alt: "Весёлая вечеринка для детей старше восьми лет",
         objectPosition: "center",
         aspectRatio: "4/3",
@@ -219,7 +219,7 @@ export const siteContent = {
     },
     {
       id: "elsa",
-      title: "Эльза",
+      title: "Снежная",
       description: "Ледяное волшебство, снежные испытания и сказочное приключение для юных мечтателей.",
       tag: "Любимый герой",
       href: "#contacts",
@@ -240,19 +240,6 @@ export const siteContent = {
       image: {
         src: "/images/animators/taba-lapka.webp",
         alt: "Аниматор программы Таба-лапка",
-        objectPosition: "center top",
-        aspectRatio: "4/5",
-      },
-    },
-    {
-      id: "pajama-party",
-      title: "Пижама пати",
-      description: "Уютный праздник в пижамах с играми, танцами и тёплой атмосферой для лучших друзей.",
-      href: "#contacts",
-      cta: "Позвать героя",
-      image: {
-        src: "/images/animators/pajama-party.webp",
-        alt: "Ведущая программы Пижама пати",
         objectPosition: "center top",
         aspectRatio: "4/5",
       },
@@ -370,7 +357,7 @@ export const siteContent = {
     {
       id: "sparkling",
       title: "Блестящее",
-      description: "Создаём сияющие образы, экспериментируем с блёстками и превращаем праздник в настоящую арт-мастерскую.",
+      description: "Устраиваем яркое бумажное шоу с вихрем конфетти, музыкой и весёлой дискотекой для незабываемого праздника.",
       href: "#contacts",
       cta: "Узнать подробнее",
       image: {
