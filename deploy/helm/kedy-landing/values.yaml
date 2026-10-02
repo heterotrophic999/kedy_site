@@ -1,0 +1,95 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/torchcat/kedy_landing
+  tag: v1.0.0
+  digest: sha256:ebb2ada1f982ae3fad3f64117874abcef0ca1f77f0fdeaa2b317370de866307a
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  fsGroup: 1001
+  fsGroupChangePolicy: OnRootMismatch
+
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1001
+  runAsGroup: 1001
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  className: traefik
+  mainHost: kedynsk.ru
+  wwwHost: www.kedynsk.ru
+  path: /
+  pathType: Prefix
+  tls:
+    enabled: true
+    clusterIssuer: letsencrypt-prod
+    secretName: kedynsk-ru-tls
+  redirects:
+    httpToHttps: true
+    wwwToApex: true
+    wwwRegex: "^https://www\\.kedynsk\\.ru/(.*)"
+    wwwReplacement: "https://kedynsk.ru/${1}"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+startupProbe:
+  httpGet:
+    path: /
+    port: http
+  failureThreshold: 30
+  periodSeconds: 2
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 2
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+nodeSelector:
+  kubernetes.io/hostname: neurohunter.tech
+
+tolerations: []
+affinity: {}
+
+storage:
+  cacheSizeLimit: 256Mi
+  tmpSizeLimit: 64Mi
+
+terminationGracePeriodSeconds: 30

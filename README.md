@@ -87,3 +87,34 @@ public/images/          # локальные WebP/AVIF-фотографии
 ```
 
 Связь с агентством доступна по телефону и через кнопки мессенджеров в контактном блоке.
+
+## Production-деплой в Kubernetes через Helm
+
+Production-образ опубликован в Docker Hub и закреплён в Helm values по digest. Chart создаёт Deployment, ClusterIP Service, Traefik Ingress, HTTPS-сертификат Let’s Encrypt и HTTP → HTTPS redirect. Pod размещается только на ноде `neurohunter.tech`; toleration для `ru_node` отсутствует.
+
+Предварительные условия:
+
+- A-записи `kedynsk.ru` и `www.kedynsk.ru` указывают на `109.122.196.22`;
+- активен правильный kube-context;
+- в кластере доступны Traefik и ClusterIssuer `letsencrypt-prod`.
+
+Установка или безопасное обновление:
+
+```bash
+helm upgrade --install kedy-landing deploy/helm/kedy-landing \
+  --namespace kedy \
+  --create-namespace \
+  -f deploy/helm/kedy-landing/values-prod.yaml \
+  --atomic \
+  --wait \
+  --timeout 5m
+```
+
+Проверка после установки:
+
+```bash
+kubectl get pods -n kedy -o wide
+kubectl get ingress,certificate -n kedy
+helm status kedy-landing -n kedy
+curl -I https://kedynsk.ru
+```

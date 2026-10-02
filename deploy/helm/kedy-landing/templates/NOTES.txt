@@ -1,0 +1,10 @@
+KEDY landing chart is ready.
+
+Release:   {{ .Release.Name }}
+Namespace: {{ .Release.Namespace }}
+Domain:    https://{{ .Values.ingress.mainHost }}
+
+Check the rollout:
+  kubectl get pods -n {{ .Release.Namespace }} -o wide
+  kubectl get ingress,certificate -n {{ .Release.Namespace }}
+  helm status {{ .Release.Name }} -n {{ .Release.Namespace }}

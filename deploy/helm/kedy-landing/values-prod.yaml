@@ -1,0 +1,14 @@
+image:
+  repository: docker.io/torchcat/kedy_landing
+  tag: v1.0.0
+  digest: sha256:ebb2ada1f982ae3fad3f64117874abcef0ca1f77f0fdeaa2b317370de866307a
+
+ingress:
+  mainHost: kedynsk.ru
+  wwwHost: www.kedynsk.ru
+  tls:
+    clusterIssuer: letsencrypt-prod
+    secretName: kedynsk-ru-tls
+
+nodeSelector:
+  kubernetes.io/hostname: neurohunter.tech

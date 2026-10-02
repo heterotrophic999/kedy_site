@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["image", "service", "ingress", "nodeSelector"],
+  "properties": {
+    "replicaCount": { "type": "integer", "minimum": 1 },
+    "image": {
+      "type": "object",
+      "required": ["repository", "digest", "pullPolicy"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "tag": { "type": "string" },
+        "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "pullPolicy": { "type": "string", "enum": ["Always", "IfNotPresent", "Never"] }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["type", "port", "targetPort"]
+    },
+    "ingress": {
+      "type": "object",
+      "required": ["enabled", "className", "mainHost", "tls"],
+      "properties": {
+        "mainHost": { "type": "string", "minLength": 1 },
+        "wwwHost": { "type": "string" },
+        "tls": {
+          "type": "object",
+          "required": ["enabled", "clusterIssuer", "secretName"]
+        }
+      }
+    },
+    "nodeSelector": {
+      "type": "object",
+      "required": ["kubernetes.io/hostname"],
+      "properties": {
+        "kubernetes.io/hostname": { "const": "neurohunter.tech" }
+      }
+    }
+  }
+}
