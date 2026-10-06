@@ -2,24 +2,14 @@ import { siteContent } from "@/content/siteContent";
 import { Container } from "./Container";
 import { Icon } from "./Icon";
 import { PrimaryButton, SecondaryButton } from "./Buttons";
+import { HeroBackgroundVideo } from "./HeroBackgroundVideo";
 
 export function Hero() {
   const { hero } = siteContent;
 
   return (
     <section id="top" className="relative isolate flex min-h-[calc(100svh-var(--header-height))] overflow-hidden bg-brand-purple">
-      <video
-        className="absolute inset-0 size-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={hero.image.src}
-        aria-hidden="true"
-      >
-        <source src="/videos/hero-background.mp4?v=3457" type="video/mp4" />
-      </video>
+      <HeroBackgroundVideo poster={hero.image.src} />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,10,58,0.86)_0%,rgba(38,16,75,0.64)_48%,rgba(38,16,75,0.16)_100%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/55 via-transparent to-brand-purple/20" aria-hidden="true" />
 
