@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Icon } from "@/components/Icon";
+import { PackageCard } from "@/components/PackageCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SectionShell } from "@/components/SectionShell";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -22,7 +23,7 @@ export default function Home() {
       <main>
         <Hero />
 
-        <SectionShell id="categories" tone="cream">
+        <SectionShell id="categories" tone="cream" decorate decorationVariant="wow">
           <SectionHeading {...siteContent.categoriesIntro} align="center" />
           <div className={`mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${siteContent.features.showAddons ? "xl:grid-cols-5" : "xl:grid-cols-4"}`}>
             {visibleCategories.map((item, index) => (
@@ -38,9 +39,9 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="animators" tone="white">
+        <SectionShell id="animators" tone="white" decorate decorationVariant="party">
           <SectionHeading {...siteContent.sections.animators} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {siteContent.animators.map((item) => <ServiceCard key={item.id} item={item} />)}
           </div>
           <aside className="mt-8 flex flex-col gap-5 rounded-[28px] bg-surface-lilac px-6 py-6 shadow-card sm:flex-row sm:items-center sm:justify-between sm:px-8">
@@ -57,14 +58,14 @@ export default function Home() {
           </aside>
         </SectionShell>
 
-        <SectionShell id="parties" tone="blush" decorate>
+        <SectionShell id="parties" tone="blush" decorate decorationVariant="wow">
           <SectionHeading {...siteContent.sections.parties} />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {siteContent.parties.map((item) => <ServiceCard key={item.id} item={item} />)}
           </div>
         </SectionShell>
 
-        <SectionShell id="shows" tone="cream">
+        <SectionShell id="shows" tone="cream" decorate>
           <SectionHeading {...siteContent.sections.shows} />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {siteContent.shows.map((item) => <ServiceCard key={item.id} item={item} />)}
@@ -72,13 +73,24 @@ export default function Home() {
         </SectionShell>
 
         {siteContent.features.showAddons ? (
-          <SectionShell id="addons" tone="lilac" decorate>
+          <SectionShell id="addons" tone="lilac" decorate decorationVariant="party">
             <SectionHeading {...siteContent.sections.addons} align="center" />
-            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {siteContent.addons.map((item) => <AddonCard key={item.id} {...item} />)}
             </div>
           </SectionShell>
         ) : null}
+
+        <SectionShell id="packages" tone="white" decorate decorationVariant="wow">
+          <SectionHeading {...siteContent.sections.packages} align="center" />
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
+            {siteContent.packages.map((item) => (
+              <div key={item.id} className="w-full md:w-[calc(50%-0.75rem)] xl:w-[calc(33.333%-1rem)]">
+                <PackageCard item={item} />
+              </div>
+            ))}
+          </div>
+        </SectionShell>
 
         <section id="contacts" className="relative isolate overflow-hidden bg-brand-purple py-16 sm:py-20 lg:py-28">
           <DecorativeLayer variant="contact" />

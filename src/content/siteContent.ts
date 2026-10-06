@@ -15,6 +15,24 @@ export type ServiceItem = {
   cta: string;
 };
 
+export type PackageItem = {
+  id: string;
+  number: string;
+  icon: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  duration: string;
+  description: string;
+  features: string[];
+  optionsTitle?: string;
+  options?: string[];
+  gift: string;
+  badge?: string;
+  buttonLabel: string;
+  href: string;
+};
+
 export const siteContent = {
   brand: {
     name: "КЕДЫ",
@@ -25,13 +43,13 @@ export const siteContent = {
     },
   },
   features: {
-    showAddons: false,
+    showAddons: true,
   },
   navigation: [
     { label: "О нас", href: "#why-us" },
     { label: "Аниматоры", href: "#animators" },
     { label: "Шоу", href: "#shows" },
-    { label: "Пакеты", href: "#categories" },
+    { label: "Пакеты", href: "#packages" },
     { label: "Вечеринки", href: "#parties" },
     { label: "Дополнения", href: "#addons" },
     { label: "Контакты", href: "#contacts" },
@@ -51,7 +69,7 @@ export const siteContent = {
     titleLead: "Детские праздники",
     titleAccent: "в Новосибирске",
     description:
-      "Превращаем важный день в настоящее приключение — с любимыми героями, яркими шоу и заботой о каждой детали.",
+      "Детские праздники, которые дети потом обсуждают неделю\nАниматоры, шоу и готовые программы в Новосибирске.\nПодберём праздник под возраст ребёнка и ваш бюджет.",
     primaryCta: { label: "Выбрать программу", href: "#categories" },
     secondaryCta: { label: "Получить консультацию", href: "#contacts" },
     image: {
@@ -84,7 +102,7 @@ export const siteContent = {
       id: "cat-packages",
       title: "Пакетные предложения",
       description: "Готовый праздник без хлопот",
-      href: "#contacts",
+      href: "#packages",
       image: {
         src: "/images/categories/packages.jpg",
         alt: "Дети и аниматор на праздничной программе",
@@ -122,8 +140,8 @@ export const siteContent = {
       description: "Ещё больше ярких деталей",
       href: "#addons",
       image: {
-        src: "/images/categories/addons.webp",
-        alt: "Воздушные шары и праздничный декор",
+        src: "/images/categories/addons-games.jpg",
+        alt: "Ведущая рядом с большой игрой в крестики-нолики",
         objectPosition: "center",
         aspectRatio: "4/3",
       },
@@ -165,6 +183,11 @@ export const siteContent = {
     },
   ],
   sections: {
+    packages: {
+      eyebrow: "Готовые решения",
+      title: "ПАКЕТЫ УСЛУГ",
+      description: "Выберите подходящий формат — программу и детали праздника мы уже продумали за вас.",
+    },
     animators: {
       eyebrow: "Знакомьтесь",
       title: "Любимые герои уже готовы к празднику",
@@ -184,11 +207,122 @@ export const siteContent = {
       description: "Эффектное дополнение, которое собирает вокруг себя и детей, и взрослых.",
     },
     addons: {
-      eyebrow: "Последние штрихи",
-      title: "Сделать праздник ярче",
-      description: "Добавьте детали, которые создадут атмосферу и останутся на красивых фотографиях.",
+      eyebrow: "Ещё больше впечатлений",
+      title: "Дополнительные услуги",
+      description: "Добавьте к программе яркие детали, которые сделают праздник ещё интереснее.",
     },
   },
+  packages: [
+    {
+      id: "light",
+      number: "01",
+      icon: "🟢",
+      title: "ЛАЙТ",
+      subtitle: "Первый праздник с любимым героем",
+      price: "4 000 ₽",
+      duration: "45 минут",
+      description: "Отличный вариант.",
+      features: [
+        "Герой на выбор",
+        "Игровая программа — 45 минут",
+        "Тематический реквизит",
+        "Музыкальное сопровождение",
+        "Игры и танцы с детьми",
+      ],
+      gift: "Шарики-фигурки для гостей",
+      buttonLabel: "Выбрать «Лайт»",
+      href: "#contacts",
+    },
+    {
+      id: "standard",
+      number: "02",
+      icon: "⭐",
+      title: "СТАНДАРТ",
+      subtitle: "Больше времени — больше впечатлений",
+      price: "5 000 ₽",
+      duration: "60 минут",
+      description: "Полноценная часовая программа с любимым героем, играми, танцами и особенным сюрпризом для именинника.",
+      features: [
+        "Герой на выбор",
+        "Игровая программа — 60 минут",
+        "Тематический реквизит",
+        "Музыкальное сопровождение",
+        "Задания, состязания и танцы",
+        "Секретный подарок имениннику",
+      ],
+      gift: "Шарики-фигурки для гостей",
+      badge: "ХИТ",
+      buttonLabel: "Выбрать «Стандарт»",
+      href: "#contacts",
+    },
+    {
+      id: "bright",
+      number: "03",
+      icon: "🔥",
+      title: "ЯРКИЙ",
+      subtitle: "Анимация + настоящее шоу",
+      price: "7 500 ₽",
+      duration: "90 минут",
+      description: "Для тех, кому хочется не просто аниматора, а большого праздника с ярким финалом.",
+      features: [
+        "Герой или вечеринка на выбор — 60 минут",
+        "Тематический реквизит",
+        "Музыкальное сопровождение",
+        "Секретный подарок имениннику",
+        "Шоу на выбор — 30 минут",
+      ],
+      optionsTitle: "Можно выбрать шоу:",
+      options: ["🫧 Мини-шоу мыльных пузырей", "🧪 Научное шоу", "⭐ Гигантские подушки"],
+      gift: "Смонтированный видеоролик с праздника\nШарики-фигурки всем гостям",
+      badge: "ВЫГОДНО",
+      buttonLabel: "Хочу яркий праздник",
+      href: "#contacts",
+    },
+    {
+      id: "all-inclusive",
+      number: "04",
+      icon: "👑",
+      title: "ВСЁ ВКЛЮЧЕНО",
+      subtitle: "Максимум впечатлений за один праздник",
+      price: "10 000 ₽",
+      duration: "120 минут",
+      description: "Два часа развлечений, в которых мы уже собрали всё необходимое для большого праздника.",
+      features: [
+        "Герой или вечеринка на выбор — 60 минут",
+        "Тематический реквизит",
+        "Музыкальное сопровождение",
+        "Секретный подарок имениннику",
+        "Шоу на выбор — 30 минут",
+        "Блеск-тату — 30 минут",
+      ],
+      gift: "Смонтированный видеоролик с праздника\nШарики-фигурки всем гостям",
+      badge: "МАКСИМУМ ВПЕЧАТЛЕНИЙ",
+      buttonLabel: "Хочу всё включено",
+      href: "#contacts",
+    },
+    {
+      id: "trendy",
+      number: "05",
+      icon: "⚡",
+      title: "ТРЕНДОВЫЙ",
+      subtitle: "Для тех, кто уже вырос из обычных аниматоров",
+      price: "6 000 ₽",
+      duration: "70 минут",
+      description: "Драйвовый формат для детей постарше: музыка, челленджи, общение и программа без ощущения «детского утренника».",
+      features: [
+        "Вечеринка на выбор — 70 минут",
+        "Тематическая программа",
+        "Музыкальное сопровождение",
+        "Челленджи, игры и задания в стиле выбранной вечеринки",
+      ],
+      optionsTitle: "Вечеринка на выбор:",
+      options: ["💗 Девчачий чат", "⚡ Челлендж-пати", "🖤 НЕ ИГРЫ", "🌈 Яркий бум"],
+      gift: "Смонтированный видеоролик с вечеринки",
+      badge: "ДЛЯ ДЕТЕЙ ПОСТАРШЕ",
+      buttonLabel: "Выбрать вечеринку",
+      href: "#contacts",
+    },
+  ] satisfies PackageItem[],
   animators: [
     {
       id: "fairy",
@@ -213,6 +347,19 @@ export const siteContent = {
       image: {
         src: "/images/animators/kitty.webp",
         alt: "Аниматор в образе весёлой кошечки",
+        objectPosition: "center top",
+        aspectRatio: "4/5",
+      },
+    },
+    {
+      id: "hello-kitty",
+      title: "Китти",
+      description: "Милое розовое приключение с играми, танцами и сюрпризами для маленьких модниц.",
+      href: "#contacts",
+      cta: "Позвать героя",
+      image: {
+        src: "/images/animators/kitty-room.png",
+        alt: "Аниматор в образе Китти в розовой комнате",
         objectPosition: "center top",
         aspectRatio: "4/5",
       },
@@ -253,6 +400,32 @@ export const siteContent = {
       image: {
         src: "/images/animators/unicorn-medium.webp",
         alt: "Аниматор в сказочном образе единорожки",
+        objectPosition: "center top",
+        aspectRatio: "4/5",
+      },
+    },
+    {
+      id: "skye",
+      title: "Скай",
+      description: "Отважная спасательная миссия с весёлыми играми и заданиями для юных героев.",
+      href: "#contacts",
+      cta: "Позвать героя",
+      image: {
+        src: "/images/animators/skye-tower-v2.png",
+        alt: "Аниматор в образе Скай из команды спасателей",
+        objectPosition: "center top",
+        aspectRatio: "4/5",
+      },
+    },
+    {
+      id: "superheroes",
+      title: "Супер герои",
+      description: "Смелые испытания, командные миссии и настоящее приключение для юных супергероев.",
+      href: "#contacts",
+      cta: "Позвать героя",
+      image: {
+        src: "/images/animators/superheroes-ladybug.png",
+        alt: "Аниматор в образе супергероини на фоне Парижа",
         objectPosition: "center top",
         aspectRatio: "4/5",
       },
@@ -370,12 +543,34 @@ export const siteContent = {
   ] satisfies ServiceItem[],
   addons: [
     {
-      id: "facepaint",
-      title: "Аквагрим",
-      description: "Безопасные краски и любимые образы",
+      id: "coronation",
+      title: "Коронация",
+      description: "Торжественный момент для главного героя праздника",
       image: {
-        src: "/images/addons/facepaint.webp",
-        alt: "Яркий детский аквагрим",
+        src: "/images/addons/coronation.png",
+        alt: "Фея вручает королевскую подушку юной принцессе на коронации",
+        objectPosition: "center",
+        aspectRatio: "1/1",
+      },
+    },
+    {
+      id: "glitter-tattoo",
+      title: "Блеск-тату",
+      description: "Сияющие рисунки на коже с безопасным глиттером",
+      image: {
+        src: "/images/addons/glitter-tattoo.png",
+        alt: "Набор цветного глиттера и трафаретов для блеск-тату",
+        objectPosition: "center",
+        aspectRatio: "1/1",
+      },
+    },
+    {
+      id: "balloon-figures",
+      title: "Шарики-фигурки",
+      description: "Забавные фигурки из шаров для каждого гостя",
+      image: {
+        src: "/images/addons/balloon-figures.png",
+        alt: "Разноцветные фигурки животных, цветка и сердца из воздушных шаров",
         objectPosition: "center",
         aspectRatio: "1/1",
       },
@@ -385,53 +580,9 @@ export const siteContent = {
       title: "Пиньята",
       description: "Красивый сюрприз со сладким финалом",
       image: {
-        src: "/images/addons/pinata.webp",
-        alt: "Яркая праздничная пиньята",
-        objectPosition: "center",
-        aspectRatio: "1/1",
-      },
-    },
-    {
-      id: "photographer",
-      title: "Фотограф",
-      description: "Живые эмоции в каждом кадре",
-      image: {
-        src: "/images/addons/photographer.webp",
-        alt: "Фотограф снимает детский праздник",
-        objectPosition: "center",
-        aspectRatio: "1/1",
-      },
-    },
-    {
-      id: "photzone",
-      title: "Фотозона",
-      description: "Декорации в теме вашего праздника",
-      image: {
-        src: "/images/addons/photzone.webp",
-        alt: "Праздничная фотозона в розово-лиловых цветах",
-        objectPosition: "center",
-        aspectRatio: "1/1",
-      },
-    },
-    {
-      id: "balloons",
-      title: "Воздушные шары",
-      description: "Композиции, цифры и облака шаров",
-      image: {
-        src: "/images/addons/balloons.webp",
-        alt: "Композиция из ярких воздушных шаров",
-        objectPosition: "center",
-        aspectRatio: "1/1",
-      },
-    },
-    {
-      id: "decor",
-      title: "Декор",
-      description: "Продуманное оформление каждой детали",
-      image: {
-        src: "/images/addons/decor.webp",
-        alt: "Декор праздничного стола для ребёнка",
-        objectPosition: "center",
+        src: "/images/addons/pinata-party.png",
+        alt: "Дети играют с яркой праздничной пиньятой",
+        objectPosition: "center 35%",
         aspectRatio: "1/1",
       },
     },

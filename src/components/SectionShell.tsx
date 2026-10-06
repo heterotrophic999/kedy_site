@@ -8,6 +8,7 @@ type SectionShellProps = {
   tone?: "white" | "lilac" | "cream" | "blush";
   className?: string;
   decorate?: boolean;
+  decorationVariant?: "default" | "wow" | "party";
 };
 
 const tones = {
@@ -17,10 +18,10 @@ const tones = {
   blush: "bg-surface-blush",
 };
 
-export function SectionShell({ id, children, tone = "white", className = "", decorate = false }: SectionShellProps) {
+export function SectionShell({ id, children, tone = "white", className = "", decorate = false, decorationVariant = "default" }: SectionShellProps) {
   return (
     <section id={id} className={`relative isolate py-16 sm:py-20 lg:py-28 ${tones[tone]} ${className}`}>
-      {decorate ? <DecorativeLayer /> : null}
+      {decorate ? <DecorativeLayer variant={decorationVariant} /> : null}
       <Container className="relative z-10">{children}</Container>
     </section>
   );

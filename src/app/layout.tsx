@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "КЕДЫ — детские праздники в Новосибирске",
   description:
     "Яркие детские праздники в Новосибирске: аниматоры, вечеринки, шоу-программы и праздничный декор.",
+  icons: {
+    icon: [{ url: "/images/brand/kedy-logo-transparent.png?v=2", type: "image/png" }],
+    shortcut: "/images/brand/kedy-logo-transparent.png?v=2",
+    apple: "/images/brand/kedy-logo-transparent.png?v=2",
+  },
   openGraph: {
     title: "КЕДЫ — детские праздники в Новосибирске",
     description: "Праздники, которые дети вспоминают с восторгом.",
