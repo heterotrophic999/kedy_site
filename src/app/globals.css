@@ -47,6 +47,13 @@ section[id] {
   scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
+/* iOS may show native controls when Low Power Mode blocks autoplay. */
+.hero-background-video::-webkit-media-controls,
+.hero-background-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
 @media (max-width: 767px) {
   :root {
     --header-height: 68px;

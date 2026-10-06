@@ -9,7 +9,12 @@ export function Hero() {
 
   return (
     <section id="top" className="relative isolate flex min-h-[calc(100svh-var(--header-height))] overflow-hidden bg-brand-purple">
-      <HeroBackgroundVideo poster={hero.image.src} />
+      <HeroBackgroundVideo
+        src="/videos/hero-background.mp4?v=3459"
+        mobileSrc="/videos/hero-background-mobile.mp4?v=3459"
+        poster={hero.image.src}
+        fallbackSrc="/images/hero/hero-background-loop.webp?v=3459"
+      />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,10,58,0.86)_0%,rgba(38,16,75,0.64)_48%,rgba(38,16,75,0.16)_100%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/55 via-transparent to-brand-purple/20" aria-hidden="true" />
 

@@ -1,65 +1,79 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type HeroBackgroundVideoProps = {
+  src: string;
+  mobileSrc: string;
   poster: string;
+  fallbackSrc: string;
 };
 
-export function HeroBackgroundVideo({ poster }: HeroBackgroundVideoProps) {
+export function HeroBackgroundVideo({ src, mobileSrc, poster, fallbackSrc }: HeroBackgroundVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
+  const attemptPlay = useCallback(() => {
     const video = videoRef.current;
-
     if (!video) return;
 
-    // Safari on iOS can restore a page with the video paused, even when the
-    // autoplay attributes are present in the initial HTML.
     video.defaultMuted = true;
     video.muted = true;
-
-    const play = () => {
-      void video.play().catch(() => {
-        // iOS may still block autoplay in Low Power Mode. The poster remains
-        // visible in that case instead of leaving the hero blank.
-      });
-    };
-    const playWhenVisible = () => {
-      if (document.visibilityState === "visible") play();
-    };
-
-    play();
-    window.addEventListener("pageshow", play);
-    document.addEventListener("visibilitychange", playWhenVisible);
-    // Low Power Mode on iOS blocks every form of programmatic autoplay.
-    // A real user gesture is the only allowed fallback, so start the video on
-    // the first touch anywhere on the page without showing a separate control.
-    document.addEventListener("touchstart", play, { once: true, passive: true });
-    document.addEventListener("pointerdown", play, { once: true, passive: true });
-
-    return () => {
-      window.removeEventListener("pageshow", play);
-      document.removeEventListener("visibilitychange", playWhenVisible);
-      document.removeEventListener("touchstart", play);
-      document.removeEventListener("pointerdown", play);
-    };
+    void video.play().catch(() => {
+      // iOS may block autoplay in Low Power Mode. The animated fallback stays
+      // visible until playback is allowed by a real user interaction.
+    });
   }, []);
 
+  useEffect(() => {
+    const playWhenVisible = () => {
+      if (document.visibilityState === "visible") attemptPlay();
+    };
+
+    attemptPlay();
+    window.addEventListener("pageshow", attemptPlay);
+    document.addEventListener("visibilitychange", playWhenVisible);
+    document.addEventListener("touchstart", attemptPlay, { once: true, passive: true });
+    document.addEventListener("pointerdown", attemptPlay, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener("pageshow", attemptPlay);
+      document.removeEventListener("visibilitychange", playWhenVisible);
+      document.removeEventListener("touchstart", attemptPlay);
+      document.removeEventListener("pointerdown", attemptPlay);
+    };
+  }, [attemptPlay]);
+
   return (
-    <video
-      ref={videoRef}
-      className="absolute inset-0 size-full object-cover"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster={poster}
-      disablePictureInPicture
-      aria-hidden="true"
-    >
-      <source src="/videos/hero-background.mp4?v=3458" type="video/mp4" />
-    </video>
+    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <Image
+        className="object-cover"
+        src={fallbackSrc}
+        alt=""
+        fill
+        priority
+        unoptimized
+        sizes="100vw"
+      />
+      <video
+        ref={videoRef}
+        className={`hero-background-video pointer-events-none absolute inset-0 size-full object-cover transition-opacity duration-200 ${isPlaying ? "opacity-100" : "opacity-0"}`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={poster}
+        controls={false}
+        disablePictureInPicture
+        disableRemotePlayback
+        onCanPlay={attemptPlay}
+        onPlaying={() => setIsPlaying(true)}
+      >
+        <source src={mobileSrc} media="(max-width: 767px)" type="video/mp4" />
+        <source src={src} type="video/mp4" />
+      </video>
+    </div>
   );
 }
