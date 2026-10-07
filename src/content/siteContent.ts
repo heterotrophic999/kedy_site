@@ -358,7 +358,7 @@ export const siteContent = {
       href: "#contacts",
       cta: "Позвать героя",
       image: {
-        src: "/images/animators/kitty-room.webp",
+        src: "/images/animators/kitty-room.png",
         alt: "Аниматор в образе Китти в розовой комнате",
         objectPosition: "center top",
         aspectRatio: "4/5",
@@ -398,8 +398,8 @@ export const siteContent = {
       href: "#contacts",
       cta: "Позвать героя",
       image: {
-        src: "/images/animators/unicorn-medium.webp",
-        alt: "Аниматор в сказочном образе единорожки",
+        src: "/images/animators/unicorn-room.png",
+        alt: "Принцесса-единорожка в сказочной розовой комнате",
         objectPosition: "center top",
         aspectRatio: "4/5",
       },
