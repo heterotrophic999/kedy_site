@@ -14,6 +14,7 @@ export function Footer() {
                 alt={siteContent.brand.logo.alt}
                 width={144}
                 height={96}
+                unoptimized
                 className="h-24 w-36 object-contain"
               />
             </a>

@@ -38,7 +38,7 @@ export const siteContent = {
     name: "КЕДЫ",
     tagline: "агентство детских праздников",
     logo: {
-      src: "/images/brand/kedy-logo-transparent.png",
+      src: "/images/brand/kedy-logo-header.webp",
       alt: "КЕДЫ — организация детских праздников",
     },
   },
@@ -358,7 +358,7 @@ export const siteContent = {
       href: "#contacts",
       cta: "Позвать героя",
       image: {
-        src: "/images/animators/kitty-room.png",
+        src: "/images/animators/kitty-room.webp",
         alt: "Аниматор в образе Китти в розовой комнате",
         objectPosition: "center top",
         aspectRatio: "4/5",

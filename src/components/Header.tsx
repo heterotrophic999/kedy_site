@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[var(--header-height)] border-b border-brand-purple/10 bg-white/90 backdrop-blur-xl">
       <Container className="flex h-full items-center justify-between gap-4">
         <a href="#top" aria-label={siteContent.header.homeLabel} className="group flex shrink-0 items-center gap-2">
-          <Image src={siteContent.brand.logo.src} alt={siteContent.brand.logo.alt} width={84} height={56} priority className="h-12 w-[72px] object-contain transition duration-200 group-hover:scale-105 sm:h-14 sm:w-[84px]" />
+          <Image src={siteContent.brand.logo.src} alt={siteContent.brand.logo.alt} width={84} height={56} priority unoptimized className="h-12 w-[72px] object-contain transition duration-200 group-hover:scale-105 sm:h-14 sm:w-[84px]" />
         </a>
 
         <nav aria-label="Основная навигация" className="hidden xl:block">
