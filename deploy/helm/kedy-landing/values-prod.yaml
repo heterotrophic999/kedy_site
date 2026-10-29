@@ -1,7 +1,7 @@
 image:
   repository: docker.io/torchcat/kedy_landing
-  tag: v2.0.4
-  digest: sha256:5d9a37a243812e07f1dc5f69c48e531cdd72bf22cdcdd01a6d62abda62646ed8
+  tag: v2.0.5
+  digest: sha256:6577d743ecf24b28529728fd35a0cca7562480e20bb2efcfca7c491539f1812f
 
 ingress:
   mainHost: kedynsk.ru
