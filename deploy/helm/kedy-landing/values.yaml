@@ -2,8 +2,8 @@ replicaCount: 1
 
 image:
   repository: docker.io/torchcat/kedy_landing
-  tag: v2.0.5
-  digest: sha256:6577d743ecf24b28529728fd35a0cca7562480e20bb2efcfca7c491539f1812f
+  tag: v2.0.6
+  digest: sha256:f11c26ba90b8b19e08f47696640aca5b6c6c0facedf121a2804799d77b9ac661
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
