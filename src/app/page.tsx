@@ -35,7 +35,7 @@ export default function Home() {
         <SectionShell id="why-us" tone="lilac" decorate>
           <SectionHeading {...siteContent.whyUs} align="center" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {siteContent.benefits.map((item) => <FeatureCard key={item.id} {...item} />)}
+            {siteContent.benefits.map((item, index) => <FeatureCard key={item.id} {...item} number={index + 1} />)}
           </div>
         </SectionShell>
 

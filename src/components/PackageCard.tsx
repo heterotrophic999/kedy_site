@@ -33,7 +33,9 @@ export function PackageCard({ item }: PackageCardProps) {
         {item.features.map((feature) => (
           <li key={feature} className="flex gap-3 text-[15px] leading-6 text-ink/75">
             <span aria-hidden="true" className="shrink-0 font-black text-[#39A852]">✓</span>
-            <span>{feature}</span>
+            <span className={feature === "Секретный подарок имениннику" ? "font-black text-brand-purple" : undefined}>
+              {feature}
+            </span>
           </li>
         ))}
       </ul>

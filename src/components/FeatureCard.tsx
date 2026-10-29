@@ -1,7 +1,6 @@
-import { Icon } from "./Icon";
-
 type FeatureCardProps = {
   icon: string;
+  number: number;
   title: string;
   description: string;
   accent: "pink" | "purple" | "yellow" | "lime";
@@ -14,11 +13,11 @@ const accents = {
   lime: "bg-[#E9FFC0] text-[#416600]",
 };
 
-export function FeatureCard({ icon, title, description, accent }: FeatureCardProps) {
+export function FeatureCard({ number, title, description, accent }: FeatureCardProps) {
   return (
     <article className="rounded-[28px] bg-white/80 p-6 shadow-card backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-7">
-      <span className={`mb-6 grid size-14 place-items-center rounded-2xl ${accents[accent]}`}>
-        <Icon name={icon} className="size-7" />
+      <span className={`mb-6 grid size-14 place-items-center rounded-2xl text-2xl font-black ${accents[accent]}`}>
+        {number}
       </span>
       <h3 className="text-xl font-black leading-tight text-brand-purple">{title}</h3>
       <p className="mt-3 text-base leading-6 text-ink/70">{description}</p>
